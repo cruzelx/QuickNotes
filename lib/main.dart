@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:quicknotes/components/sliverHeaders.dart';
+import 'package:quicknotes/screens/quickNotesTab.dart';
+import 'package:quicknotes/screens/toDoTabView.dart';
+import 'package:quicknotes/theme/theme.dart';
+import 'package:quicknotes/widgets/FAB.dart';
 
 void main() {
   runApp(QuickNotes());
@@ -13,10 +18,7 @@ class _QuickNotesState extends State<QuickNotes> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(
-        primaryColor: Color(0xff50002a),
-        backgroundColor: Color(0xffe5e5e5),
-      ),
+      theme: themeData,
       home: QuickNotesMainPage(),
       debugShowCheckedModeBanner: false,
     );
@@ -28,26 +30,52 @@ class QuickNotesMainPage extends StatefulWidget {
   _QuickNotesMainPageState createState() => _QuickNotesMainPageState();
 }
 
-class _QuickNotesMainPageState extends State<QuickNotesMainPage> {
+class _QuickNotesMainPageState extends State<QuickNotesMainPage>
+    with SingleTickerProviderStateMixin {
+  TabController _tabController;
+  ScrollController _scrollViewController;
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(vsync: this, length: 2,initialIndex: 0)
+    ..addListener((){
+      setState(() {
+        
+      });
+    });
+    _scrollViewController = ScrollController();
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    _scrollViewController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-          body: CustomScrollView(
-        scrollDirection: Axis.vertical,
-        slivers: <Widget>[
-          SliverAppBar(
-            title: Text("This is title"),
-            expandedHeight: 200.0,
-            elevation: 8.0,
-            flexibleSpace: FlexibleSpaceBar(
-                centerTitle: true,
-                title: Text('this is centered'),
-                background: Image.network(
-                    "https://www.freevector.com/uploads/vector/preview/28054/Time-to-Study.jpg",
-                    fit: BoxFit.cover)),
+      body: NestedScrollView(
+        controller: _scrollViewController,
+        headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+          return sliverHeader(_tabController);
+        },
+        body: Padding(
+          padding: const EdgeInsets.only(top: 10.0, left: 8.0, right: 8.0),
+          child: TabBarView(
+            controller: _tabController,
+            children: <Widget>[
+              QuickNoteTabView(),
+              ToDoTabView(),
+            ],
           ),
-        ],
+        ),
       ),
+      floatingActionButton: fab(context, _tabController),
+
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }
