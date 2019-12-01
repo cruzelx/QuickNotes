@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-void main(){
+void main() {
   runApp(QuickNotes());
 }
 
@@ -15,8 +15,10 @@ class _QuickNotesState extends State<QuickNotes> {
     return MaterialApp(
       theme: ThemeData(
         primaryColor: Color(0xff50002a),
+        backgroundColor: Color(0xffe5e5e5),
       ),
       home: QuickNotesMainPage(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
@@ -29,9 +31,23 @@ class QuickNotesMainPage extends StatefulWidget {
 class _QuickNotesMainPageState extends State<QuickNotesMainPage> {
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-
-      
+    return Scaffold(
+          body: CustomScrollView(
+        scrollDirection: Axis.vertical,
+        slivers: <Widget>[
+          SliverAppBar(
+            title: Text("This is title"),
+            expandedHeight: 200.0,
+            elevation: 8.0,
+            flexibleSpace: FlexibleSpaceBar(
+                centerTitle: true,
+                title: Text('this is centered'),
+                background: Image.network(
+                    "https://www.freevector.com/uploads/vector/preview/28054/Time-to-Study.jpg",
+                    fit: BoxFit.cover)),
+          ),
+        ],
+      ),
     );
   }
 }
