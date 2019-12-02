@@ -15,20 +15,22 @@ Widget quickNoteElement(BuildContext context, int index) {
             children: <Widget>[
               Text("Loreum Ipseum"),
               Padding(
-                padding: EdgeInsets.only(top:10.0),
-                child:Text("Date"),
+                padding: EdgeInsets.only(top: 10.0),
+                child: Text("Date"),
               ),
-              
             ],
           ),
-          
         ),
-        secondaryActions: <Widget>[
+        actions: <Widget>[
           IconSlideAction(
-            caption:'Bookmark',
-            color:Colors.green,
-            icon:Icons.bookmark_border,
-            onTap: (){
+            color: Colors.transparent,
+            iconWidget:CircleAvatar(
+              radius: 25.0,
+              child: Icon(Icons.bookmark_border),
+              backgroundColor: Colors.lightGreen,
+              foregroundColor: Colors.white,
+            ) ,
+            onTap: () {
               final snackBar = SnackBar(
                 content: Text("Bookmarked Successfully"),
               );
@@ -36,10 +38,16 @@ Widget quickNoteElement(BuildContext context, int index) {
               Scaffold.of(context).showSnackBar(snackBar);
             },
           ),
+        ],
+        secondaryActions: <Widget>[
           IconSlideAction(
-            caption: 'Delete',
-            color: Colors.redAccent,
-            icon: Icons.delete,
+            color: Colors.transparent,
+            iconWidget:CircleAvatar(
+              radius: 25.0,
+              child: Icon(Icons.delete),
+              backgroundColor: Colors.red,
+              foregroundColor: Colors.white,
+            ) ,
             onTap: () {
               final snackBar = SnackBar(
                 content: Text("Deleted Successfully"),
