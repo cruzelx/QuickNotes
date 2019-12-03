@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:quicknotes/widgets/notePopupMenu.dart';
+import 'package:speech_recognition/speech_recognition.dart';
 
 class NoteEditorScreen extends StatefulWidget {
   @override
@@ -6,8 +8,53 @@ class NoteEditorScreen extends StatefulWidget {
 }
 
 class _NoteEditorScreenState extends State<NoteEditorScreen> {
+  //Note Status Flags
   bool isBookmarked = false;
   bool isSaved = false;
+
+  //Speech Status Flag
+  bool _isAvailable = false;
+  bool _isListening = false;
+
+  // TextEditingControllers
+  final _titleTextController = TextEditingController();
+  final _contentTextController = TextEditingController();
+
+  //SpeechRecognition controller
+  SpeechRecognition _speechRecognition;
+
+  void initSpeechRecognition() {
+    _speechRecognition = SpeechRecognition();
+
+    //Available
+    _speechRecognition.setAvailabilityHandler(
+        (bool res) => setState(() => _isAvailable = res));
+
+    //Listening start
+    _speechRecognition.setRecognitionStartedHandler(
+        () => setState(() => _isListening = true));
+
+    //Listening stop
+    _speechRecognition.setRecognitionCompleteHandler(
+        () => setState(() => _isListening = false));
+
+    //Obtain text
+    _speechRecognition.setRecognitionResultHandler(
+        (String text) => setState(() => _contentTextController.text = text));
+
+    //Launch
+    _speechRecognition
+        .activate()
+        .then((res) => setState(() => _isAvailable = res));
+  }
+
+  @override
+  void dispose() {
+    _contentTextController.dispose();
+    _titleTextController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,14 +65,13 @@ class _NoteEditorScreenState extends State<NoteEditorScreen> {
           Padding(
             padding: const EdgeInsets.all(10.0),
             child: GestureDetector(
-              onTap: (){},
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Text("SAVE"),
-                ],
-              )
-            ),
+                onTap: () {},
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Text("SAVE"),
+                  ],
+                )),
           ),
           Padding(
             padding: const EdgeInsets.all(10.0),
@@ -41,40 +87,53 @@ class _NoteEditorScreenState extends State<NoteEditorScreen> {
           ),
           Padding(
             padding: const EdgeInsets.all(10.0),
-            child: GestureDetector(
-              onTap:(){},
-              child: Icon(Icons.more_vert),
+            child: IconButton(
+              icon: Icon(Icons.settings),
+              onPressed: () {
+                styleMenu(context);
+              },
             ),
           ),
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.fromLTRB(10.0, 10.0, 10.0, 0.0),
-        child: Column(
-          children: <Widget>[
-            Expanded(
-              child: Column(
-                children: <Widget>[
-                  TextField(
-                    decoration: InputDecoration(
-                      helperText: "Enter Title",
-                    ),
-                  ),
-                  Expanded(
-                    child: TextField(
-                      maxLines: null,
-                      maxLength: 500,
-                      decoration: InputDecoration(
-                        helperText: "Enter Content",
-                      ),
-                    ),
-                  ),
-                ],
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              TextField(
+                controller: _titleTextController,
+                style: TextStyle(fontSize: 30.0),
+                decoration: InputDecoration(hintText: "Enter Title"),
+                maxLines: 2,
+                maxLength: 50,
               ),
-            ),
-          ],
+              SizedBox(
+                height: 50.0,
+              ),
+              Expanded(
+                child: TextField(
+                  controller: _contentTextController,
+                  maxLines: 99999,
+                  maxLength: 500,
+                  scrollPhysics: BouncingScrollPhysics(),
+                  keyboardType: TextInputType.multiline,
+                  decoration: InputDecoration(
+                      border: InputBorder.none, hintText: "Enter Content"),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
+      floatingActionButton: FloatingActionButton.extended(
+        label: Text("Speak"),
+        icon: Icon(Icons.mic),
+        backgroundColor: Theme.of(context).primaryColor,
+        onPressed: () {},
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }

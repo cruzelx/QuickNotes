@@ -20,6 +20,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_slidable: ^0.5.4
+  speech_recognition: ^0.3.0
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -57,7 +58,53 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
+  fonts:
+    - family: Alef-Regular
+      fonts:
+        - asset: assets/fonts/Alef-Regular.ttf
+          style: normal
+    - family: AmaticSC-Regular
+      fonts:
+        - asset: assets/fonts/AmaticSC-Regular.ttf
+          style: normal
+    - family: Chewy-Regular
+      fonts:
+        - asset: assets/fonts/Chewy-Regular.ttf
+          style: normal
+    - family: DancingScript-VariableFont_wght
+      fonts:
+        - asset: assets/fonts/DancingScript-VariableFont_wght.ttf
+          style: normal
+    - family: IndieFlower-Regular
+      fonts:
+        - asset: assets/fonts/IndieFlower-Regular.ttf
+          style: normal
+    - family: JosefinSans-Regular
+      fonts:
+        - asset: assets/fonts/JosefinSans-Regular.ttf
+          style: normal
+    - family: Lobster-Regular
+      fonts:
+        - asset: assets/fonts/Lobster-Regular.ttf
+          style: normal
+    - family: Montserrat-Regular
+      fonts:
+        - asset: assets/fonts/Montserrat-Regular.ttf
+          style: normal
+    - family: PTSerif-Regular
+      fonts:
+        - asset: assets/fonts/PTSerif-Regular.ttf
+          style: normal
+    - family: RobotoMono-Regular
+      fonts:
+        - asset: assets/fonts/RobotoMono-Regular.ttf
+          style: normal
+    - family: Roboto-Regular
+      fonts:
+        - asset: assets/fonts/Roboto-Regular.ttf
+          style: normal
+    
+    
   #   - family: Schyler
   #     fonts:
   #       - asset: fonts/Schyler-Regular.ttf
