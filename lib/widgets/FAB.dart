@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quicknotes/screens/backdropScreen.dart';
 import 'package:quicknotes/screens/noteEditor.dart';
 
 Widget fab(BuildContext context, TabController _tabController) {
@@ -10,7 +11,7 @@ Widget fab(BuildContext context, TabController _tabController) {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => NoteEditorScreen(),
+                  builder: (context) => BackDropScreen(),
                 ));
           },
           backgroundColor: Theme.of(context).primaryColor)

@@ -20,7 +20,10 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_slidable: ^0.5.4
-  speech_recognition: ^0.3.0
+  intl: ^0.15.8
+  sqflite:
+  provider: 
+  backdrop: 
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

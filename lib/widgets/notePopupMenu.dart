@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:quicknotes/bloc/noteProvider.dart';
 
 Future<List<dynamic>> styleMenu(BuildContext context) async {
   return await showDialog<List<dynamic>>(
@@ -61,38 +63,41 @@ class _MenuContentState extends State<MenuContent> {
                 Text("Font Size: "),
                 Row(
                   children: <Widget>[
-                    Slider(
-                      value: _sliderVal,
-                      min: 15.0,
-                      max: 40.0,
-                      divisions: 25,
-                      activeColor: Theme.of(context).primaryColor,
-                      inactiveColor: Colors.grey,
-                      label: "$_sliderVal",
-                      onChanged: (double newVal) {
-                        setState(() {
-                          _sliderVal = newVal;
-                        });
-                      },
-                    ),
+                     Slider(
+                        value: _sliderVal,
+                        min: 15.0,
+                        max: 40.0,
+                        divisions: 25,
+                        activeColor: Theme.of(context).primaryColor,
+                        inactiveColor: Colors.grey,
+                        label: "$_sliderVal",
+                        onChanged: (double newVal) {
+                          setState(() {
+                            _sliderVal = newVal;
+                           
+                          });
+                        },
+                      ),
+                    
                     Text("$_sliderVal"),
                   ],
                 ),
                 Text("Font Family: "),
-                DropdownButton(
-                  value: defaultFontFamily,
-                  items: _fontFamilies.map((String fontFamily) {
-                    return DropdownMenuItem(
-                      value: fontFamily,
-                      child: Text("$fontFamily"),
-                    );
-                  }).toList(),
-                  onChanged: (String newVal) {
-                    setState(() {
-                      defaultFontFamily = newVal;
-                    });
-                  },
-                ),
+                 DropdownButton(
+                    value: defaultFontFamily,
+                    items: _fontFamilies.map((String fontFamily) {
+                      return DropdownMenuItem(
+                        value: fontFamily,
+                        child: Text("$fontFamily"),
+                      );
+                    }).toList(),
+                    onChanged: (String newVal) {
+                      setState(() {
+                        defaultFontFamily = newVal;
+                        
+                      });
+                    },
+                  ),
                 
               ],
             ),
@@ -101,14 +106,15 @@ class _MenuContentState extends State<MenuContent> {
               child: RaisedButton(
                 textColor: Colors.white,
                 color: Theme.of(context).primaryColor,
-                child: Text("Okay",),
-                onPressed: (){
-                  Navigator.of(context).pop();
+                child: Text(
+                  "Okay",
+                ),
+                onPressed: () {
+                  Navigator.of(context).pop([_sliderVal,defaultFontFamily]);
                 },
               ),
             ),
           ],
-          
         ),
       ),
     );
