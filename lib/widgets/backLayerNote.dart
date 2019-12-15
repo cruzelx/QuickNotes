@@ -14,17 +14,17 @@ class _BackdropMenuState extends State<BackdropMenu> {
   @override
   void initState() {
     _fontFamilies.addAll([
-      "Alef-Regular",
-      "AmaticSC-Regular",
-      "Chewy-Regular",
-      "DancingScript-VariableFont_wght",
-      "IndieFlower-Regular",
-      "Roboto-Regular",
-      "Lobster-Regular",
-      "Montserrat-Regular",
-      "PTSerif-Regular",
-      "RobotoMono-Regular",
-      "JosefinSans-Regular"
+      "Alef",
+      "AmaticSC",
+      "Chewy",
+      "DancingScript",
+      "IndieFlower",
+      "Roboto",
+      "Lobster",
+      "Montserrat",
+      "PTSerif",
+      "RobotoMono",
+      "JosefinSans"
     ]);
     _fontFamily = _fontFamilies.elementAt(5);
     super.initState();
@@ -97,7 +97,14 @@ class _BackdropMenuState extends State<BackdropMenu> {
                 items: _fontFamilies.map((String fontFamily) {
                   return DropdownMenuItem(
                     value: fontFamily,
-                    child: Text("$fontFamily"),
+                    child: SizedBox(
+                      height: 20.0,
+                      width: 70.0,
+                      child: Container(
+                        color: Colors.pink,
+                        child: Text("$fontFamily"),
+                      ),
+                    ),
                   );
                 }).toList(),
                 onChanged: (String newVal) {

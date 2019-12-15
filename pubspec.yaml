@@ -62,55 +62,55 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: Alef-Regular
+    - family: Alef
       fonts:
-        - asset: assets/fonts/Alef-Regular.ttf
+        - asset: assets/fonts/Alef.ttf
           style: normal
-    - family: AmaticSC-Regular
+    - family: AmaticSC
       fonts:
-        - asset: assets/fonts/AmaticSC-Regular.ttf
+        - asset: assets/fonts/AmaticSC.ttf
           style: normal
-    - family: Chewy-Regular
+    - family: Chewy
       fonts:
-        - asset: assets/fonts/Chewy-Regular.ttf
+        - asset: assets/fonts/Chewy.ttf
           style: normal
-    - family: DancingScript-VariableFont_wght
+    - family: DancingScript
       fonts:
-        - asset: assets/fonts/DancingScript-VariableFont_wght.ttf
+        - asset: assets/fonts/DancingScript.ttf
           style: normal
-    - family: IndieFlower-Regular
+    - family: IndieFlower
       fonts:
-        - asset: assets/fonts/IndieFlower-Regular.ttf
+        - asset: assets/fonts/IndieFlower.ttf
           style: normal
-    - family: JosefinSans-Regular
+    - family: JosefinSans
       fonts:
-        - asset: assets/fonts/JosefinSans-Regular.ttf
+        - asset: assets/fonts/JosefinSans.ttf
           style: normal
-    - family: Lobster-Regular
+    - family: Lobster
       fonts:
-        - asset: assets/fonts/Lobster-Regular.ttf
+        - asset: assets/fonts/Lobster.ttf
           style: normal
-    - family: Montserrat-Regular
+    - family: Montserrat
       fonts:
-        - asset: assets/fonts/Montserrat-Regular.ttf
+        - asset: assets/fonts/Montserrat.ttf
           style: normal
-    - family: PTSerif-Regular
+    - family: PTSerif
       fonts:
-        - asset: assets/fonts/PTSerif-Regular.ttf
+        - asset: assets/fonts/PTSerif.ttf
           style: normal
-    - family: RobotoMono-Regular
+    - family: RobotoMono
       fonts:
-        - asset: assets/fonts/RobotoMono-Regular.ttf
+        - asset: assets/fonts/RobotoMono.ttf
           style: normal
-    - family: Roboto-Regular
+    - family: Roboto
       fonts:
-        - asset: assets/fonts/Roboto-Regular.ttf
+        - asset: assets/fonts/Roboto.ttf
           style: normal
     
     
   #   - family: Schyler
   #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
+  #       - asset: fonts/Schyler.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

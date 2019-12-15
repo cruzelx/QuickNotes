@@ -1,6 +1,8 @@
 import "package:flutter/material.dart";
 import 'dart:math' as math;
 
+import 'package:quicknotes/widgets/backLayerNote.dart';
+
 class TwoPanels extends StatefulWidget {
   final AnimationController animationController;
   TwoPanels({this.animationController});
@@ -51,12 +53,7 @@ class _TwoPanelsState extends State<TwoPanels>
         children: <Widget>[
           Container(
             color: Theme.of(context).primaryColor,
-            child: Center(
-              child: Text(
-                "backPanel",
-                style: TextStyle(fontSize: 20.0, color: Colors.white),
-              ),
-            ),
+            child: BackdropMenu()
           ),
           PositionedTransition(
             rect: getPanelAnimation(constraints),
