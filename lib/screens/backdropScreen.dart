@@ -11,7 +11,7 @@ class BackDropScreen extends StatefulWidget {
 class _BackDropScreenState extends State<BackDropScreen>
     with SingleTickerProviderStateMixin {
   AnimationController _animationController;
-  String title = "Add Note";
+  
   @override
   void initState() {
     // TODO: implement initState
@@ -42,7 +42,7 @@ class _BackDropScreenState extends State<BackDropScreen>
       appBar: AppBar(
         elevation: 0.0,
         centerTitle: true,
-        title: Text(title),
+        title: Text("Menu"),
         actions: <Widget>[
           IconButton(
             icon: AnimatedIcon(
@@ -50,9 +50,7 @@ class _BackDropScreenState extends State<BackDropScreen>
               progress: _animationController.view,
             ),
             onPressed: () {
-              setState(() {
-                title = "Menu";
-              });
+              
               _animationController.fling(
                 velocity: isBackVisible ? -1.0 : 1.0,
               );
