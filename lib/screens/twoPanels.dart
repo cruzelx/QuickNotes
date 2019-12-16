@@ -13,7 +13,7 @@ class TwoPanels extends StatefulWidget {
 class _TwoPanelsState extends State<TwoPanels>
     with SingleTickerProviderStateMixin {
   //final GlobalKey _backdropKey = GlobalKey();
-  static const header_height = 40.0;
+  static const header_height = 55.0;
 
   Animation<RelativeRect> getPanelAnimation(BoxConstraints constraints) {
     final height = constraints.biggest.height;
@@ -67,22 +67,16 @@ class _TwoPanelsState extends State<TwoPanels>
                 children: <Widget>[
                   GestureDetector(
                    onTap: isBackVisible,
-                    child: SizedBox(
+                    child: Container(
                       height: header_height,
                       width: double.infinity,
-                      child: Container(
-                        color: Colors.pink,
-                        width: double.infinity,
-                        height: header_height,
-                        child: Center(
-                          child: Text(
-                            "frontPanelHeader",
-                            style: Theme.of(context).textTheme.button,
-                          ),
-                        ),
+                      //color: Colors.green,
+                      child: Center(
+                        child: Text("Add Note",style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16.0),),
                       ),
                     ),
                   ),
+                  Divider(),
                   Expanded(
                     child: Center(
                       child: Text("frontPanel"),

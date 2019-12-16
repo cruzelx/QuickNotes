@@ -69,7 +69,7 @@ class _BackdropMenuState extends State<BackdropMenu> {
                 value: _sliderVal,
                 min: 15.0,
                 max: 35.0,
-                divisions: 20,
+               // divisions: 20,
                 activeColor: Colors.pink,
                 inactiveColor: Colors.white,
                 label: "$_sliderVal",
@@ -79,7 +79,7 @@ class _BackdropMenuState extends State<BackdropMenu> {
                   });
                 },
               ),
-              //  Text("$_sliderVal",style: TextStyle(color: Colors.white)),
+               Text(_sliderVal.toStringAsFixed(1),style: TextStyle(color: Colors.white)),
             ],
           ),
           Row(
@@ -93,18 +93,13 @@ class _BackdropMenuState extends State<BackdropMenu> {
                 ),
               ),
               DropdownButton(
-                value: _fontFamily,
+                iconEnabledColor: Colors.white,
+                underline: SizedBox(),
+                //value: _fontFamily,
                 items: _fontFamilies.map((String fontFamily) {
                   return DropdownMenuItem(
                     value: fontFamily,
-                    child: SizedBox(
-                      height: 20.0,
-                      width: 70.0,
-                      child: Container(
-                        color: Colors.pink,
-                        child: Text("$fontFamily"),
-                      ),
-                    ),
+                    child: Text("$fontFamily "),
                   );
                 }).toList(),
                 onChanged: (String newVal) {
